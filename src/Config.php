@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace WpPluginInsights\RunnerDummy;
+namespace WpPluginInsights\RunnerPhpCompatibility;
 
 use Dotenv\Dotenv;
 
@@ -16,8 +16,8 @@ class Config
         public readonly string $rabbitMqVhost,
         public readonly string $inputQueue,
         public readonly string $reportExchange,
-        public readonly string $runnerCategory,
-        public readonly string $runnerName
+        public readonly string $runnerName,
+        public readonly string $runnerCategory = 'compatibility'
     ) {
     }
 
@@ -32,10 +32,10 @@ class Config
             rabbitMqUser: self::env('RABBITMQ_USER', 'guest'),
             rabbitMqPassword: self::env('RABBITMQ_PASSWORD', 'guest'),
             rabbitMqVhost: self::env('RABBITMQ_VHOST', '/'),
-            inputQueue: self::env('RABBITMQ_INPUT_QUEUE', 'plugin.analysis.runner-dummy'),
+            inputQueue: self::env('RABBITMQ_INPUT_QUEUE', 'plugin.analysis.runner-php-compatibility'),
             reportExchange: self::env('RABBITMQ_REPORT_EXCHANGE', 'plugin.analysis.reports'),
-            runnerCategory: self::env('RUNNER_CATEGORY', 'basic'),
-            runnerName: self::env('RUNNER_NAME', 'runner-dummy')
+            runnerName: self::env('RUNNER_NAME', 'runner-php-compatibility'),
+            runnerCategory: self::env('RUNNER_CATEGORY', 'compatibility')
         );
     }
 

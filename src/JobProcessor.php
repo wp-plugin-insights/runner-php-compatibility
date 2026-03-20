@@ -2,16 +2,19 @@
 
 declare(strict_types=1);
 
-namespace WpPluginInsights\RunnerDummy;
+namespace WpPluginInsights\RunnerPhpCompatibility;
 
 use InvalidArgumentException;
 use Throwable;
 
 class JobProcessor
 {
+    private readonly PhpCompatibilityAnalyzer $analyzer;
+
     public function __construct(
         private readonly Config $config
     ) {
+        $this->analyzer = new PhpCompatibilityAnalyzer();
     }
 
     /**
@@ -26,7 +29,7 @@ class JobProcessor
             'runner' => $this->config->runnerName,
             'plugin' => $job->plugin,
             'src' => $job->src,
-            'report' => $this->doAction($job),
+            'report' => $this->analyzer->analyze($job),
             'received_at' => $receivedAt,
             'completed_at' => gmdate(DATE_ATOM),
         ];
@@ -45,17 +48,5 @@ class JobProcessor
         }
 
         return Job::fromArray($payload);
-    }
-
-    /**
-     * @return array<string, mixed>
-     */
-    private function doAction(Job $job): array
-    {
-        return [
-            'message' => 'Dummy runner executed successfully',
-            'plugin' => $job->plugin,
-            'src_exists' => is_dir($job->src),
-        ];
     }
 }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php" cacheDirectory=".phpunit.cache">
+    <testsuites>
+        <testsuite name="runner-php-compatibility">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
+

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="WPPluginInsightsCompatibility" xsi:noNamespaceSchemaLocation="https://schema.phpcodesniffer.com/phpcs.xsd">
+    <description>WordPress PHP compatibility ruleset with project-specific sniffs for newer PHP features.</description>
+
+    <rule ref="PHPCompatibilityWP"/>
+
+    <rule ref="./Sniffs/Classes/NewPropertyPromotionSniff.php"/>
+    <rule ref="./Sniffs/Classes/NewReadonlyFeaturesSniff.php"/>
+    <rule ref="./Sniffs/Classes/NewTypedClassConstantsSniff.php"/>
+    <rule ref="./Sniffs/Classes/NewAsymmetricVisibilitySniff.php"/>
+</ruleset>
+
