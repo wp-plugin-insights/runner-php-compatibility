@@ -47,78 +47,38 @@ class PhpCompatibilityAnalyzer
         }
 
         $declaredRequirement = $this->detectDeclaredPhpRequirement($job->src);
-        $testedVersions = [];
-        $lastFailure = null;
-
-        foreach (self::supportedVersions() as $version) {
-            $testedVersions[] = $version;
-
-            $result = $this->runPhpcs($job->src, $version);
-            $phpcsFindings = $this->extractFindings($result);
-
-            if (($result['totals']['errors'] ?? 0) === 0
-                && ($result['totals']['warnings'] ?? 0) === 0) {
-                $score = $this->buildScore($declaredRequirement, $version);
-
-                return [
-                    'status' => 'ok',
-                    'score' => [
-                        'grade' => $score['grade'],
-                        'reasoning' => $score['reasoning'],
-                    ],
-                    'metrics' => [
-                        'detected_min_php' => $version,
-                        'declared_min_php' => $declaredRequirement['version'],
-                        'declared_min_php_source' => $declaredRequirement['path'],
-                        'tested_versions' => $testedVersions,
-                        'based_on_version_scan' => true,
-                        'summary' => sprintf('Lowest required PHP version: %s', $version),
-                    ],
-                    'issues' => [],
-                    /*'details' => [
-                        'declared_requirement' => $declaredRequirement,
-                        'blocking_findings' => $lastFailure['findings'] ?? [],
-                    ],*/
-                ];
-            }
-
-            $lastFailure = [
-                'version' => $version,
-                'findings' => $phpcsFindings,
-            ];
-        }
+        $testedVersions = self::supportedVersions();
+        $result = $this->runPhpcs($job->src, $testedVersions[0] . '-' . end($testedVersions));
+        $findings = $this->extractFindings($result);
+        $detectedVersion = $this->determineDetectedMinimumPhpVersion($findings);
+        $score = $this->buildScore($declaredRequirement, $detectedVersion);
 
         return [
-            'status' => 'no-supported-version-detected',
+            'status' => 'ok',
             'score' => [
-                'grade' => 'F',
-                'reasoning' => sprintf(
-                    'Compatibility findings remained for all tested versions up to %s.',
-                    end($testedVersions)
-                ),
+                'grade' => $score['grade'],
+                'reasoning' => $score['reasoning'],
             ],
             'metrics' => [
-                'detected_min_php' => null,
+                'detected_min_php' => $detectedVersion,
                 'declared_min_php' => $declaredRequirement['version'],
                 'declared_min_php_source' => $declaredRequirement['path'],
                 'tested_versions' => $testedVersions,
-                'based_on_version_scan' => true,
-                'summary' => sprintf(
-                    'Compatibility findings remained for all tested versions up to %s',
-                    end($testedVersions)
-                ),
+                'based_on_version_scan' => false,
+                'summary' => sprintf('Lowest required PHP version: %s', $detectedVersion),
             ],
-            'issues' => $lastFailure['findings'] ?? [],
-            /*'details' => [
+            'issues' => [],
+            'details' => [
                 'declared_requirement' => $declaredRequirement,
-            ],*/
+                'blocking_findings' => $findings,
+            ],
         ];
     }
 
     /**
      * @return array<string, mixed>
      */
-    private function runPhpcs(string $src, string $version): array
+    private function runPhpcs(string $src, string $versionConstraint): array
     {
         $phpcs = dirname(__DIR__) . '/vendor/bin/phpcs';
 
@@ -131,7 +91,7 @@ class PhpCompatibilityAnalyzer
             '--standard=' . dirname(__DIR__) . '/phpcs/WPPluginInsightsCompatibility/ruleset.xml',
             '--runtime-set',
             'testVersion',
-            $version . '-' . $version,
+            $versionConstraint,
             '--report=json',
             '--extensions=php',
             $src,
@@ -209,6 +169,7 @@ class PhpCompatibilityAnalyzer
                     'type' => $message['type'] ?? null,
                     'source' => $message['source'] ?? null,
                     'message' => $message['message'] ?? null,
+                    'required_version' => $this->extractRequiredVersion($message),
                 ];
 
             }
@@ -224,6 +185,60 @@ class PhpCompatibilityAnalyzer
     private function limitFindings(array $findings): array
     {
         return array_slice($findings, 0, self::REPORT_LIMIT);
+    }
+
+    /**
+     * @param list<array<string, mixed>> $findings
+     */
+    private function determineDetectedMinimumPhpVersion(array $findings): string
+    {
+        $detectedVersion = self::supportedVersions()[0];
+
+        foreach ($findings as $finding) {
+            $requiredVersion = $finding['required_version'] ?? null;
+
+            if (!is_string($requiredVersion)) {
+                continue;
+            }
+
+            if (version_compare($requiredVersion, $detectedVersion, '>')) {
+                $detectedVersion = $requiredVersion;
+            }
+        }
+
+        return $detectedVersion;
+    }
+
+    /**
+     * @param array<string, mixed> $message
+     */
+    private function extractRequiredVersion(array $message): ?string
+    {
+        $text = (string) ($message['message'] ?? '');
+
+        if (preg_match('/PHP(?: version)? ([0-9.]+) or earlier/i', $text, $matches) !== 1) {
+            return null;
+        }
+
+        return $this->nextSupportedVersion($matches[1]);
+    }
+
+    private function nextSupportedVersion(string $version): ?string
+    {
+        $supportedVersions = self::supportedVersions();
+        $index = array_search($version, $supportedVersions, true);
+
+        if ($index === false) {
+            foreach ($supportedVersions as $supportedVersion) {
+                if (version_compare($supportedVersion, $version, '>')) {
+                    return $supportedVersion;
+                }
+            }
+
+            return end($supportedVersions) ?: null;
+        }
+
+        return $supportedVersions[$index + 1] ?? $supportedVersions[$index] ?? null;
     }
 
     /**

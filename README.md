@@ -54,8 +54,8 @@ The runner publishes an envelope like:
 
 - Runs `phpcs` with a local ruleset that extends `PHPCompatibilityWP`
 - Adds custom PHPCS sniffs for newer PHP 8.x features that are not covered reliably enough for this runner
-- Tests a fixed set of PHP versions from low to high
-- Finds the first version with zero compatibility findings
+- Runs a single broad PHPCS pass against the supported version range
+- Infers the minimum required PHP version from the highest PHP requirement found in the reported compatibility findings
 - Looks for a root-level `readme.txt` first and falls back to a root-level `readme.md`
 - Extracts `Requires PHP` from that readme and compares it to the detected minimum PHP version
 - Uses that comparison to assign a grade

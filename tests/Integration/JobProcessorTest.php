@@ -231,7 +231,8 @@ class JobProcessorTest extends TestCase
             rabbitMqVhost: '/',
             inputQueue: 'plugin.analysis.runner-php-compatibility',
             reportExchange: 'plugin.analysis.reports',
-            runnerName: 'runner-php-compatibility'
+            runnerName: 'runner-php-compatibility',
+            runnerCategory: 'compatibility'
         );
     }
 
