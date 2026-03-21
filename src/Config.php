@@ -34,8 +34,8 @@ class Config
             rabbitMqVhost: self::env('RABBITMQ_VHOST', '/'),
             inputQueue: self::env('RABBITMQ_INPUT_QUEUE', 'plugin.analysis.runner-php-compatibility'),
             reportExchange: self::env('RABBITMQ_REPORT_EXCHANGE', 'plugin.analysis.reports'),
-            runnerName: self::env('RUNNER_NAME', 'runner-php-compatibility'),
-            runnerCategory: self::env('RUNNER_CATEGORY', 'compatibility')
+            runnerName: self::env('RUNNER_NAME', 'php-compatibility'),
+            runnerCategory: self::env('RUNNER_CATEGORY', 'basic')
         );
     }
 
