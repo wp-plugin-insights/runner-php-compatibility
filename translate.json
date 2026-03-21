@@ -1,0 +1,1754 @@
+
+Deprecated: Function curl_close() is deprecated since 8.5, as it has no effect since PHP 8.0 in /Users/eriktorsner/src/wp-plugin-insights/runner-translate/src/JobProcessor.php on line 76
+{
+    "runner": "runner-translate",
+    "plugin": "akismet",
+    "version": "1.0.0",
+    "source": "local",
+    "src": "\/Users\/eriktorsner\/src\/wp-plugin-insights\/tmp\/akismet",
+    "report": {
+        "score": {
+            "grade": "A+",
+            "percentage": 96.1,
+            "reasoning": "The plugin is exceptionally well translated with an average of 96.1% coverage across 10 major locales (10 of 10 present), 10 out of 10 major locales are above 80% translated, and 21 additional locales also exceed 80%."
+        },
+        "metrics": {
+            "detected": 136,
+            "complaints": 31
+        },
+        "capabilities": {
+            "supported_locales": [
+                "sk",
+                "as",
+                "uk",
+                "ar",
+                "he",
+                "pt-br",
+                "nb",
+                "fr",
+                "en-gb",
+                "cy",
+                "zh-cn",
+                "id",
+                "ja",
+                "ru",
+                "sv",
+                "zh-tw",
+                "sq",
+                "cs",
+                "nl-be",
+                "nl",
+                "de",
+                "fa",
+                "pl",
+                "es-mx",
+                "es-cl",
+                "tr",
+                "it",
+                "ko",
+                "gl",
+                "ro",
+                "es"
+            ]
+        },
+        "issues": [],
+        "details": {
+            "locales": {
+                "bn-in": {
+                    "name": "Bengali (India)",
+                    "percentage": 0,
+                    "translated": 0,
+                    "waiting": 1,
+                    "total": 259
+                },
+                "pt": {
+                    "name": "Portuguese (Portugal)",
+                    "percentage": 69,
+                    "translated": 179,
+                    "waiting": 40,
+                    "total": 259
+                },
+                "scn": {
+                    "name": "Sicilian",
+                    "percentage": 0,
+                    "translated": 0,
+                    "waiting": 4,
+                    "total": 259
+                },
+                "twd": {
+                    "name": "Tweants",
+                    "percentage": 0,
+                    "translated": 0,
+                    "waiting": 1,
+                    "total": 259
+                },
+                "frp": {
+                    "name": "Arpitan",
+                    "percentage": 0,
+                    "translated": 1,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "rhg": {
+                    "name": "Rohingya",
+                    "percentage": 0,
+                    "translated": 1,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "roh": {
+                    "name": "Romansh",
+                    "percentage": 0,
+                    "translated": 1,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "tzm": {
+                    "name": "Tamazight (Central Atlas)",
+                    "percentage": 0,
+                    "translated": 1,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "lb": {
+                    "name": "Luxembourgish",
+                    "percentage": 0,
+                    "translated": 2,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "br": {
+                    "name": "Breton",
+                    "percentage": 1,
+                    "translated": 3,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ml": {
+                    "name": "Malayalam",
+                    "percentage": 1,
+                    "translated": 3,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "sa-in": {
+                    "name": "Sanskrit",
+                    "percentage": 1,
+                    "translated": 3,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "szl": {
+                    "name": "Silesian",
+                    "percentage": 1,
+                    "translated": 3,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "snd": {
+                    "name": "Sindhi",
+                    "percentage": 1,
+                    "translated": 4,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "haw": {
+                    "name": "Hawaiian",
+                    "percentage": 1,
+                    "translated": 5,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "tg": {
+                    "name": "Tajik",
+                    "percentage": 2,
+                    "translated": 6,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "sw": {
+                    "name": "Swahili",
+                    "percentage": 3,
+                    "translated": 8,
+                    "waiting": 4,
+                    "total": 259
+                },
+                "fo": {
+                    "name": "Faroese",
+                    "percentage": 3,
+                    "translated": 9,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "azb": {
+                    "name": "South Azerbaijani",
+                    "percentage": 3,
+                    "translated": 10,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "hy": {
+                    "name": "Armenian",
+                    "percentage": 4,
+                    "translated": 11,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ceb": {
+                    "name": "Cebuano",
+                    "percentage": 4,
+                    "translated": 11,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "kab": {
+                    "name": "Kabyle",
+                    "percentage": 4,
+                    "translated": 12,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "su": {
+                    "name": "Sundanese",
+                    "percentage": 5,
+                    "translated": 14,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "mn": {
+                    "name": "Mongolian",
+                    "percentage": 6,
+                    "translated": 17,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "co": {
+                    "name": "Corsican",
+                    "percentage": 6,
+                    "translated": 18,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "af": {
+                    "name": "Afrikaans",
+                    "percentage": 8,
+                    "translated": 21,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "pa": {
+                    "name": "Punjabi",
+                    "percentage": 8,
+                    "translated": 21,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ta": {
+                    "name": "Tamil",
+                    "percentage": 8,
+                    "translated": 22,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "os": {
+                    "name": "Ossetic",
+                    "percentage": 8,
+                    "translated": 23,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "fy": {
+                    "name": "Frisian",
+                    "percentage": 9,
+                    "translated": 24,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "kk": {
+                    "name": "Kazakh",
+                    "percentage": 9,
+                    "translated": 24,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "mg": {
+                    "name": "Malagasy",
+                    "percentage": 9,
+                    "translated": 24,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "uz": {
+                    "name": "Uzbek",
+                    "percentage": 9,
+                    "translated": 25,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "an": {
+                    "name": "Aragonese",
+                    "percentage": 10,
+                    "translated": 26,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ka": {
+                    "name": "Georgian",
+                    "percentage": 10,
+                    "translated": 26,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "me": {
+                    "name": "Montenegrin",
+                    "percentage": 10,
+                    "translated": 26,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "km": {
+                    "name": "Khmer",
+                    "percentage": 10,
+                    "translated": 28,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "haz": {
+                    "name": "Hazaragi",
+                    "percentage": 11,
+                    "translated": 29,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "kn": {
+                    "name": "Kannada",
+                    "percentage": 11,
+                    "translated": 29,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ne": {
+                    "name": "Nepali",
+                    "percentage": 11,
+                    "translated": 29,
+                    "waiting": 4,
+                    "total": 259
+                },
+                "so": {
+                    "name": "Somali",
+                    "percentage": 11,
+                    "translated": 29,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "et": {
+                    "name": "Estonian",
+                    "percentage": 11,
+                    "translated": 30,
+                    "waiting": 181,
+                    "total": 259
+                },
+                "lo": {
+                    "name": "Lao",
+                    "percentage": 11,
+                    "translated": 30,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "bn": {
+                    "name": "Bengali",
+                    "percentage": 12,
+                    "translated": 32,
+                    "waiting": 227,
+                    "total": 259
+                },
+                "mk": {
+                    "name": "Macedonian",
+                    "percentage": 12,
+                    "translated": 32,
+                    "waiting": 9,
+                    "total": 259
+                },
+                "bo": {
+                    "name": "Tibetan",
+                    "percentage": 12,
+                    "translated": 32,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "hau": {
+                    "name": "Hausa",
+                    "percentage": 12,
+                    "translated": 33,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ms": {
+                    "name": "Malay",
+                    "percentage": 13,
+                    "translated": 34,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ur": {
+                    "name": "Urdu",
+                    "percentage": 13,
+                    "translated": 35,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ga": {
+                    "name": "Irish",
+                    "percentage": 13,
+                    "translated": 36,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "mya": {
+                    "name": "Myanmar (Burmese)",
+                    "percentage": 13,
+                    "translated": 36,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "si": {
+                    "name": "Sinhala",
+                    "percentage": 13,
+                    "translated": 36,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "te": {
+                    "name": "Telugu",
+                    "percentage": 20,
+                    "translated": 53,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ta-lk": {
+                    "name": "Tamil (Sri Lanka)",
+                    "percentage": 20,
+                    "translated": 54,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "mr": {
+                    "name": "Marathi",
+                    "percentage": 22,
+                    "translated": 57,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "hi": {
+                    "name": "Hindi",
+                    "percentage": 23,
+                    "translated": 61,
+                    "waiting": 140,
+                    "total": 259
+                },
+                "kir": {
+                    "name": "Kyrgyz",
+                    "percentage": 27,
+                    "translated": 70,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "sl": {
+                    "name": "Slovenian",
+                    "percentage": 31,
+                    "translated": 81,
+                    "waiting": 10,
+                    "total": 259
+                },
+                "ary": {
+                    "name": "Moroccan Arabic",
+                    "percentage": 31,
+                    "translated": 82,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "gd": {
+                    "name": "Scottish Gaelic",
+                    "percentage": 31,
+                    "translated": 82,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "az": {
+                    "name": "Azerbaijani",
+                    "percentage": 32,
+                    "translated": 84,
+                    "waiting": 4,
+                    "total": 259
+                },
+                "ps": {
+                    "name": "Pashto",
+                    "percentage": 33,
+                    "translated": 87,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ug": {
+                    "name": "Uighur",
+                    "percentage": 33,
+                    "translated": 87,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "oci": {
+                    "name": "Occitan",
+                    "percentage": 35,
+                    "translated": 92,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "tl": {
+                    "name": "Tagalog",
+                    "percentage": 41,
+                    "translated": 107,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "th": {
+                    "name": "Thai",
+                    "percentage": 43,
+                    "translated": 113,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "fi": {
+                    "name": "Finnish",
+                    "percentage": 48,
+                    "translated": 125,
+                    "waiting": 41,
+                    "total": 259
+                },
+                "zh-hk": {
+                    "name": "Chinese (Hong Kong)",
+                    "percentage": 51,
+                    "translated": 134,
+                    "waiting": 8,
+                    "total": 259
+                },
+                "is": {
+                    "name": "Icelandic",
+                    "percentage": 51,
+                    "translated": 134,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "jv": {
+                    "name": "Javanese",
+                    "percentage": 55,
+                    "translated": 143,
+                    "waiting": 1,
+                    "total": 259
+                },
+                "de-ch": {
+                    "name": "German (Switzerland)",
+                    "percentage": 57,
+                    "translated": 149,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "bel": {
+                    "name": "Belarusian",
+                    "percentage": 57,
+                    "translated": 150,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "eo": {
+                    "name": "Esperanto",
+                    "percentage": 58,
+                    "translated": 151,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "pt-ao": {
+                    "name": "Portuguese (Angola)",
+                    "percentage": 58,
+                    "translated": 151,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "bs": {
+                    "name": "Bosnian",
+                    "percentage": 58,
+                    "translated": 152,
+                    "waiting": 1,
+                    "total": 259
+                },
+                "da": {
+                    "name": "Danish",
+                    "percentage": 58,
+                    "translated": 152,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "sr": {
+                    "name": "Serbian",
+                    "percentage": 58,
+                    "translated": 152,
+                    "waiting": 34,
+                    "total": 259
+                },
+                "es-pe": {
+                    "name": "Spanish (Peru)",
+                    "percentage": 58,
+                    "translated": 152,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "gu": {
+                    "name": "Gujarati",
+                    "percentage": 60,
+                    "translated": 157,
+                    "waiting": 87,
+                    "total": 259
+                },
+                "fr-ca": {
+                    "name": "French (Canada)",
+                    "percentage": 61,
+                    "translated": 159,
+                    "waiting": 23,
+                    "total": 259
+                },
+                "hu": {
+                    "name": "Hungarian",
+                    "percentage": 61,
+                    "translated": 159,
+                    "waiting": 17,
+                    "total": 259
+                },
+                "nn": {
+                    "name": "Norwegian (Nynorsk)",
+                    "percentage": 61,
+                    "translated": 159,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "en-nz": {
+                    "name": "English (New Zealand)",
+                    "percentage": 61,
+                    "translated": 160,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "dsb": {
+                    "name": "Lower Sorbian",
+                    "percentage": 61,
+                    "translated": 160,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "es-cr": {
+                    "name": "Spanish (Costa Rica)",
+                    "percentage": 61,
+                    "translated": 160,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "hsb": {
+                    "name": "Upper Sorbian",
+                    "percentage": 61,
+                    "translated": 160,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "hr": {
+                    "name": "Croatian",
+                    "percentage": 62,
+                    "translated": 161,
+                    "waiting": 25,
+                    "total": 259
+                },
+                "fr-be": {
+                    "name": "French (Belgium)",
+                    "percentage": 62,
+                    "translated": 161,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "en-au": {
+                    "name": "English (Australia)",
+                    "percentage": 62,
+                    "translated": 162,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "am": {
+                    "name": "Amharic",
+                    "percentage": 64,
+                    "translated": 166,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "en-za": {
+                    "name": "English (South Africa)",
+                    "percentage": 64,
+                    "translated": 167,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "bg": {
+                    "name": "Bulgarian",
+                    "percentage": 64,
+                    "translated": 168,
+                    "waiting": 88,
+                    "total": 259
+                },
+                "ckb": {
+                    "name": "Kurdish (Sorani)",
+                    "percentage": 64,
+                    "translated": 168,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "es-co": {
+                    "name": "Spanish (Colombia)",
+                    "percentage": 65,
+                    "translated": 170,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "es-ec": {
+                    "name": "Spanish (Ecuador)",
+                    "percentage": 65,
+                    "translated": 170,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "es-ve": {
+                    "name": "Spanish (Venezuela)",
+                    "percentage": 65,
+                    "translated": 170,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "en-ca": {
+                    "name": "English (Canada)",
+                    "percentage": 69,
+                    "translated": 180,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "el": {
+                    "name": "Greek",
+                    "percentage": 70,
+                    "translated": 182,
+                    "waiting": 8,
+                    "total": 259
+                },
+                "lv": {
+                    "name": "Latvian",
+                    "percentage": 71,
+                    "translated": 186,
+                    "waiting": 16,
+                    "total": 259
+                },
+                "fa-af": {
+                    "name": "Persian (Afghanistan)",
+                    "percentage": 72,
+                    "translated": 188,
+                    "waiting": 64,
+                    "total": 259
+                },
+                "eu": {
+                    "name": "Basque",
+                    "percentage": 73,
+                    "translated": 190,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "lt": {
+                    "name": "Lithuanian",
+                    "percentage": 74,
+                    "translated": 194,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "vi": {
+                    "name": "Vietnamese",
+                    "percentage": 75,
+                    "translated": 195,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "es-ar": {
+                    "name": "Spanish (Argentina)",
+                    "percentage": 77,
+                    "translated": 201,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ca": {
+                    "name": "Catalan",
+                    "percentage": 78,
+                    "translated": 203,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "sk": {
+                    "name": "Slovak",
+                    "percentage": 81,
+                    "translated": 212,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "as": {
+                    "name": "Assamese",
+                    "percentage": 84,
+                    "translated": 220,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "uk": {
+                    "name": "Ukrainian",
+                    "percentage": 85,
+                    "translated": 221,
+                    "waiting": 32,
+                    "total": 259
+                },
+                "ar": {
+                    "name": "Arabic",
+                    "percentage": 85,
+                    "translated": 222,
+                    "waiting": 6,
+                    "total": 259
+                },
+                "he": {
+                    "name": "Hebrew",
+                    "percentage": 86,
+                    "translated": 225,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "pt-br": {
+                    "name": "Portuguese (Brazil)",
+                    "percentage": 87,
+                    "translated": 227,
+                    "waiting": 15,
+                    "total": 259
+                },
+                "nb": {
+                    "name": "Norwegian (Bokm\u00e5l)",
+                    "percentage": 88,
+                    "translated": 228,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "fr": {
+                    "name": "French (France)",
+                    "percentage": 88,
+                    "translated": 229,
+                    "waiting": 30,
+                    "total": 259
+                },
+                "en-gb": {
+                    "name": "English (UK)",
+                    "percentage": 90,
+                    "translated": 234,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "cy": {
+                    "name": "Welsh",
+                    "percentage": 90,
+                    "translated": 234,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "zh-cn": {
+                    "name": "Chinese (China)",
+                    "percentage": 90,
+                    "translated": 235,
+                    "waiting": 11,
+                    "total": 259
+                },
+                "id": {
+                    "name": "Indonesian",
+                    "percentage": 94,
+                    "translated": 245,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ja": {
+                    "name": "Japanese",
+                    "percentage": 95,
+                    "translated": 247,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ru": {
+                    "name": "Russian",
+                    "percentage": 96,
+                    "translated": 249,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "sv": {
+                    "name": "Swedish",
+                    "percentage": 96,
+                    "translated": 250,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "zh-tw": {
+                    "name": "Chinese (Taiwan)",
+                    "percentage": 97,
+                    "translated": 253,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "sq": {
+                    "name": "Albanian",
+                    "percentage": 100,
+                    "translated": 259,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "cs": {
+                    "name": "Czech",
+                    "percentage": 100,
+                    "translated": 259,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "nl-be": {
+                    "name": "Dutch (Belgium)",
+                    "percentage": 100,
+                    "translated": 259,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "nl": {
+                    "name": "Dutch",
+                    "percentage": 100,
+                    "translated": 261,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "de": {
+                    "name": "German (Formal)",
+                    "percentage": 100,
+                    "translated": 259,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "fa": {
+                    "name": "Persian",
+                    "percentage": 100,
+                    "translated": 259,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "pl": {
+                    "name": "Polish",
+                    "percentage": 100,
+                    "translated": 259,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "es-mx": {
+                    "name": "Spanish (Mexico)",
+                    "percentage": 100,
+                    "translated": 259,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "es-cl": {
+                    "name": "Spanish (Chile)",
+                    "percentage": 100,
+                    "translated": 261,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "tr": {
+                    "name": "Turkish",
+                    "percentage": 101,
+                    "translated": 262,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "it": {
+                    "name": "Italian",
+                    "percentage": 101,
+                    "translated": 264,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ko": {
+                    "name": "Korean",
+                    "percentage": 101,
+                    "translated": 264,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "gl": {
+                    "name": "Galician",
+                    "percentage": 102,
+                    "translated": 266,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "ro": {
+                    "name": "Romanian",
+                    "percentage": 102,
+                    "translated": 266,
+                    "waiting": 0,
+                    "total": 259
+                },
+                "es": {
+                    "name": "Spanish (Spain)",
+                    "percentage": 103,
+                    "translated": 267,
+                    "waiting": 0,
+                    "total": 259
+                }
+            }
+        },
+        "presentation": {
+            "supported_locales": {
+                "type": "list",
+                "label": "Supported locales (80%+ translated)",
+                "items": [
+                    "sk",
+                    "as",
+                    "uk",
+                    "ar",
+                    "he",
+                    "pt-br",
+                    "nb",
+                    "fr",
+                    "en-gb",
+                    "cy",
+                    "zh-cn",
+                    "id",
+                    "ja",
+                    "ru",
+                    "sv",
+                    "zh-tw",
+                    "sq",
+                    "cs",
+                    "nl-be",
+                    "nl",
+                    "de",
+                    "fa",
+                    "pl",
+                    "es-mx",
+                    "es-cl",
+                    "tr",
+                    "it",
+                    "ko",
+                    "gl",
+                    "ro",
+                    "es"
+                ],
+                "display": "badges"
+            },
+            "coverage_by_locale": {
+                "type": "table",
+                "label": "Coverage by locale",
+                "columns": [
+                    {
+                        "key": "local",
+                        "label": "Locale"
+                    },
+                    {
+                        "key": "name",
+                        "label": "Name"
+                    },
+                    {
+                        "key": "percentage",
+                        "label": "Coverage %"
+                    }
+                ],
+                "rows": [
+                    {
+                        "local": "bn-in",
+                        "name": "Bengali (India)",
+                        "percentage": "0%"
+                    },
+                    {
+                        "local": "pt",
+                        "name": "Portuguese (Portugal)",
+                        "percentage": "69%"
+                    },
+                    {
+                        "local": "scn",
+                        "name": "Sicilian",
+                        "percentage": "0%"
+                    },
+                    {
+                        "local": "twd",
+                        "name": "Tweants",
+                        "percentage": "0%"
+                    },
+                    {
+                        "local": "frp",
+                        "name": "Arpitan",
+                        "percentage": "0%"
+                    },
+                    {
+                        "local": "rhg",
+                        "name": "Rohingya",
+                        "percentage": "0%"
+                    },
+                    {
+                        "local": "roh",
+                        "name": "Romansh",
+                        "percentage": "0%"
+                    },
+                    {
+                        "local": "tzm",
+                        "name": "Tamazight (Central Atlas)",
+                        "percentage": "0%"
+                    },
+                    {
+                        "local": "lb",
+                        "name": "Luxembourgish",
+                        "percentage": "0%"
+                    },
+                    {
+                        "local": "br",
+                        "name": "Breton",
+                        "percentage": "1%"
+                    },
+                    {
+                        "local": "ml",
+                        "name": "Malayalam",
+                        "percentage": "1%"
+                    },
+                    {
+                        "local": "sa-in",
+                        "name": "Sanskrit",
+                        "percentage": "1%"
+                    },
+                    {
+                        "local": "szl",
+                        "name": "Silesian",
+                        "percentage": "1%"
+                    },
+                    {
+                        "local": "snd",
+                        "name": "Sindhi",
+                        "percentage": "1%"
+                    },
+                    {
+                        "local": "haw",
+                        "name": "Hawaiian",
+                        "percentage": "1%"
+                    },
+                    {
+                        "local": "tg",
+                        "name": "Tajik",
+                        "percentage": "2%"
+                    },
+                    {
+                        "local": "sw",
+                        "name": "Swahili",
+                        "percentage": "3%"
+                    },
+                    {
+                        "local": "fo",
+                        "name": "Faroese",
+                        "percentage": "3%"
+                    },
+                    {
+                        "local": "azb",
+                        "name": "South Azerbaijani",
+                        "percentage": "3%"
+                    },
+                    {
+                        "local": "hy",
+                        "name": "Armenian",
+                        "percentage": "4%"
+                    },
+                    {
+                        "local": "ceb",
+                        "name": "Cebuano",
+                        "percentage": "4%"
+                    },
+                    {
+                        "local": "kab",
+                        "name": "Kabyle",
+                        "percentage": "4%"
+                    },
+                    {
+                        "local": "su",
+                        "name": "Sundanese",
+                        "percentage": "5%"
+                    },
+                    {
+                        "local": "mn",
+                        "name": "Mongolian",
+                        "percentage": "6%"
+                    },
+                    {
+                        "local": "co",
+                        "name": "Corsican",
+                        "percentage": "6%"
+                    },
+                    {
+                        "local": "af",
+                        "name": "Afrikaans",
+                        "percentage": "8%"
+                    },
+                    {
+                        "local": "pa",
+                        "name": "Punjabi",
+                        "percentage": "8%"
+                    },
+                    {
+                        "local": "ta",
+                        "name": "Tamil",
+                        "percentage": "8%"
+                    },
+                    {
+                        "local": "os",
+                        "name": "Ossetic",
+                        "percentage": "8%"
+                    },
+                    {
+                        "local": "fy",
+                        "name": "Frisian",
+                        "percentage": "9%"
+                    },
+                    {
+                        "local": "kk",
+                        "name": "Kazakh",
+                        "percentage": "9%"
+                    },
+                    {
+                        "local": "mg",
+                        "name": "Malagasy",
+                        "percentage": "9%"
+                    },
+                    {
+                        "local": "uz",
+                        "name": "Uzbek",
+                        "percentage": "9%"
+                    },
+                    {
+                        "local": "an",
+                        "name": "Aragonese",
+                        "percentage": "10%"
+                    },
+                    {
+                        "local": "ka",
+                        "name": "Georgian",
+                        "percentage": "10%"
+                    },
+                    {
+                        "local": "me",
+                        "name": "Montenegrin",
+                        "percentage": "10%"
+                    },
+                    {
+                        "local": "km",
+                        "name": "Khmer",
+                        "percentage": "10%"
+                    },
+                    {
+                        "local": "haz",
+                        "name": "Hazaragi",
+                        "percentage": "11%"
+                    },
+                    {
+                        "local": "kn",
+                        "name": "Kannada",
+                        "percentage": "11%"
+                    },
+                    {
+                        "local": "ne",
+                        "name": "Nepali",
+                        "percentage": "11%"
+                    },
+                    {
+                        "local": "so",
+                        "name": "Somali",
+                        "percentage": "11%"
+                    },
+                    {
+                        "local": "et",
+                        "name": "Estonian",
+                        "percentage": "11%"
+                    },
+                    {
+                        "local": "lo",
+                        "name": "Lao",
+                        "percentage": "11%"
+                    },
+                    {
+                        "local": "bn",
+                        "name": "Bengali",
+                        "percentage": "12%"
+                    },
+                    {
+                        "local": "mk",
+                        "name": "Macedonian",
+                        "percentage": "12%"
+                    },
+                    {
+                        "local": "bo",
+                        "name": "Tibetan",
+                        "percentage": "12%"
+                    },
+                    {
+                        "local": "hau",
+                        "name": "Hausa",
+                        "percentage": "12%"
+                    },
+                    {
+                        "local": "ms",
+                        "name": "Malay",
+                        "percentage": "13%"
+                    },
+                    {
+                        "local": "ur",
+                        "name": "Urdu",
+                        "percentage": "13%"
+                    },
+                    {
+                        "local": "ga",
+                        "name": "Irish",
+                        "percentage": "13%"
+                    },
+                    {
+                        "local": "mya",
+                        "name": "Myanmar (Burmese)",
+                        "percentage": "13%"
+                    },
+                    {
+                        "local": "si",
+                        "name": "Sinhala",
+                        "percentage": "13%"
+                    },
+                    {
+                        "local": "te",
+                        "name": "Telugu",
+                        "percentage": "20%"
+                    },
+                    {
+                        "local": "ta-lk",
+                        "name": "Tamil (Sri Lanka)",
+                        "percentage": "20%"
+                    },
+                    {
+                        "local": "mr",
+                        "name": "Marathi",
+                        "percentage": "22%"
+                    },
+                    {
+                        "local": "hi",
+                        "name": "Hindi",
+                        "percentage": "23%"
+                    },
+                    {
+                        "local": "kir",
+                        "name": "Kyrgyz",
+                        "percentage": "27%"
+                    },
+                    {
+                        "local": "sl",
+                        "name": "Slovenian",
+                        "percentage": "31%"
+                    },
+                    {
+                        "local": "ary",
+                        "name": "Moroccan Arabic",
+                        "percentage": "31%"
+                    },
+                    {
+                        "local": "gd",
+                        "name": "Scottish Gaelic",
+                        "percentage": "31%"
+                    },
+                    {
+                        "local": "az",
+                        "name": "Azerbaijani",
+                        "percentage": "32%"
+                    },
+                    {
+                        "local": "ps",
+                        "name": "Pashto",
+                        "percentage": "33%"
+                    },
+                    {
+                        "local": "ug",
+                        "name": "Uighur",
+                        "percentage": "33%"
+                    },
+                    {
+                        "local": "oci",
+                        "name": "Occitan",
+                        "percentage": "35%"
+                    },
+                    {
+                        "local": "tl",
+                        "name": "Tagalog",
+                        "percentage": "41%"
+                    },
+                    {
+                        "local": "th",
+                        "name": "Thai",
+                        "percentage": "43%"
+                    },
+                    {
+                        "local": "fi",
+                        "name": "Finnish",
+                        "percentage": "48%"
+                    },
+                    {
+                        "local": "zh-hk",
+                        "name": "Chinese (Hong Kong)",
+                        "percentage": "51%"
+                    },
+                    {
+                        "local": "is",
+                        "name": "Icelandic",
+                        "percentage": "51%"
+                    },
+                    {
+                        "local": "jv",
+                        "name": "Javanese",
+                        "percentage": "55%"
+                    },
+                    {
+                        "local": "de-ch",
+                        "name": "German (Switzerland)",
+                        "percentage": "57%"
+                    },
+                    {
+                        "local": "bel",
+                        "name": "Belarusian",
+                        "percentage": "57%"
+                    },
+                    {
+                        "local": "eo",
+                        "name": "Esperanto",
+                        "percentage": "58%"
+                    },
+                    {
+                        "local": "pt-ao",
+                        "name": "Portuguese (Angola)",
+                        "percentage": "58%"
+                    },
+                    {
+                        "local": "bs",
+                        "name": "Bosnian",
+                        "percentage": "58%"
+                    },
+                    {
+                        "local": "da",
+                        "name": "Danish",
+                        "percentage": "58%"
+                    },
+                    {
+                        "local": "sr",
+                        "name": "Serbian",
+                        "percentage": "58%"
+                    },
+                    {
+                        "local": "es-pe",
+                        "name": "Spanish (Peru)",
+                        "percentage": "58%"
+                    },
+                    {
+                        "local": "gu",
+                        "name": "Gujarati",
+                        "percentage": "60%"
+                    },
+                    {
+                        "local": "fr-ca",
+                        "name": "French (Canada)",
+                        "percentage": "61%"
+                    },
+                    {
+                        "local": "hu",
+                        "name": "Hungarian",
+                        "percentage": "61%"
+                    },
+                    {
+                        "local": "nn",
+                        "name": "Norwegian (Nynorsk)",
+                        "percentage": "61%"
+                    },
+                    {
+                        "local": "en-nz",
+                        "name": "English (New Zealand)",
+                        "percentage": "61%"
+                    },
+                    {
+                        "local": "dsb",
+                        "name": "Lower Sorbian",
+                        "percentage": "61%"
+                    },
+                    {
+                        "local": "es-cr",
+                        "name": "Spanish (Costa Rica)",
+                        "percentage": "61%"
+                    },
+                    {
+                        "local": "hsb",
+                        "name": "Upper Sorbian",
+                        "percentage": "61%"
+                    },
+                    {
+                        "local": "hr",
+                        "name": "Croatian",
+                        "percentage": "62%"
+                    },
+                    {
+                        "local": "fr-be",
+                        "name": "French (Belgium)",
+                        "percentage": "62%"
+                    },
+                    {
+                        "local": "en-au",
+                        "name": "English (Australia)",
+                        "percentage": "62%"
+                    },
+                    {
+                        "local": "am",
+                        "name": "Amharic",
+                        "percentage": "64%"
+                    },
+                    {
+                        "local": "en-za",
+                        "name": "English (South Africa)",
+                        "percentage": "64%"
+                    },
+                    {
+                        "local": "bg",
+                        "name": "Bulgarian",
+                        "percentage": "64%"
+                    },
+                    {
+                        "local": "ckb",
+                        "name": "Kurdish (Sorani)",
+                        "percentage": "64%"
+                    },
+                    {
+                        "local": "es-co",
+                        "name": "Spanish (Colombia)",
+                        "percentage": "65%"
+                    },
+                    {
+                        "local": "es-ec",
+                        "name": "Spanish (Ecuador)",
+                        "percentage": "65%"
+                    },
+                    {
+                        "local": "es-ve",
+                        "name": "Spanish (Venezuela)",
+                        "percentage": "65%"
+                    },
+                    {
+                        "local": "en-ca",
+                        "name": "English (Canada)",
+                        "percentage": "69%"
+                    },
+                    {
+                        "local": "el",
+                        "name": "Greek",
+                        "percentage": "70%"
+                    },
+                    {
+                        "local": "lv",
+                        "name": "Latvian",
+                        "percentage": "71%"
+                    },
+                    {
+                        "local": "fa-af",
+                        "name": "Persian (Afghanistan)",
+                        "percentage": "72%"
+                    },
+                    {
+                        "local": "eu",
+                        "name": "Basque",
+                        "percentage": "73%"
+                    },
+                    {
+                        "local": "lt",
+                        "name": "Lithuanian",
+                        "percentage": "74%"
+                    },
+                    {
+                        "local": "vi",
+                        "name": "Vietnamese",
+                        "percentage": "75%"
+                    },
+                    {
+                        "local": "es-ar",
+                        "name": "Spanish (Argentina)",
+                        "percentage": "77%"
+                    },
+                    {
+                        "local": "ca",
+                        "name": "Catalan",
+                        "percentage": "78%"
+                    },
+                    {
+                        "local": "sk",
+                        "name": "Slovak",
+                        "percentage": "81%"
+                    },
+                    {
+                        "local": "as",
+                        "name": "Assamese",
+                        "percentage": "84%"
+                    },
+                    {
+                        "local": "uk",
+                        "name": "Ukrainian",
+                        "percentage": "85%"
+                    },
+                    {
+                        "local": "ar",
+                        "name": "Arabic",
+                        "percentage": "85%"
+                    },
+                    {
+                        "local": "he",
+                        "name": "Hebrew",
+                        "percentage": "86%"
+                    },
+                    {
+                        "local": "pt-br",
+                        "name": "Portuguese (Brazil)",
+                        "percentage": "87%"
+                    },
+                    {
+                        "local": "nb",
+                        "name": "Norwegian (Bokm\u00e5l)",
+                        "percentage": "88%"
+                    },
+                    {
+                        "local": "fr",
+                        "name": "French (France)",
+                        "percentage": "88%"
+                    },
+                    {
+                        "local": "en-gb",
+                        "name": "English (UK)",
+                        "percentage": "90%"
+                    },
+                    {
+                        "local": "cy",
+                        "name": "Welsh",
+                        "percentage": "90%"
+                    },
+                    {
+                        "local": "zh-cn",
+                        "name": "Chinese (China)",
+                        "percentage": "90%"
+                    },
+                    {
+                        "local": "id",
+                        "name": "Indonesian",
+                        "percentage": "94%"
+                    },
+                    {
+                        "local": "ja",
+                        "name": "Japanese",
+                        "percentage": "95%"
+                    },
+                    {
+                        "local": "ru",
+                        "name": "Russian",
+                        "percentage": "96%"
+                    },
+                    {
+                        "local": "sv",
+                        "name": "Swedish",
+                        "percentage": "96%"
+                    },
+                    {
+                        "local": "zh-tw",
+                        "name": "Chinese (Taiwan)",
+                        "percentage": "97%"
+                    },
+                    {
+                        "local": "sq",
+                        "name": "Albanian",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "cs",
+                        "name": "Czech",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "nl-be",
+                        "name": "Dutch (Belgium)",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "nl",
+                        "name": "Dutch",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "de",
+                        "name": "German (Formal)",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "fa",
+                        "name": "Persian",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "pl",
+                        "name": "Polish",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "es-mx",
+                        "name": "Spanish (Mexico)",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "es-cl",
+                        "name": "Spanish (Chile)",
+                        "percentage": "100%"
+                    },
+                    {
+                        "local": "tr",
+                        "name": "Turkish",
+                        "percentage": "101%"
+                    },
+                    {
+                        "local": "it",
+                        "name": "Italian",
+                        "percentage": "101%"
+                    },
+                    {
+                        "local": "ko",
+                        "name": "Korean",
+                        "percentage": "101%"
+                    },
+                    {
+                        "local": "gl",
+                        "name": "Galician",
+                        "percentage": "102%"
+                    },
+                    {
+                        "local": "ro",
+                        "name": "Romanian",
+                        "percentage": "102%"
+                    },
+                    {
+                        "local": "es",
+                        "name": "Spanish (Spain)",
+                        "percentage": "103%"
+                    }
+                ]
+            }
+        }
+    },
+    "received_at": "2026-03-21T11:42:31+00:00",
+    "completed_at": "2026-03-21T11:42:32+00:00"
+}

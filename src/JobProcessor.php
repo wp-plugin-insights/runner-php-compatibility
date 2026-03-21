@@ -28,6 +28,7 @@ class JobProcessor
         return [
             'runner' => $this->config->runnerName,
             'plugin' => $job->plugin,
+            'version' => $job->version,
             'src' => $job->src,
             'report' => $this->analyzer->analyze($job),
             'received_at' => $receivedAt,

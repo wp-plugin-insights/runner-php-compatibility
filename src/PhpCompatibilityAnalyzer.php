@@ -54,12 +54,15 @@ class PhpCompatibilityAnalyzer
             if (($result['totals']['errors'] ?? 0) === 0
                 && ($result['totals']['warnings'] ?? 0) === 0) {
                 return [
-                    'status' => 'ok',
-                    'detected_min_php' => $version,
-                    'tested_versions' => $testedVersions,
-                    'summary' => sprintf('Lowest required PHP version: %s', $version),
-                    'findings' => $lastFailure['findings'] ?? [],
-                    'based_on_version_scan' => true,
+                    'score' => [
+                        'grade' => 'A+',
+                    ],
+                    'metrics' => [
+                        'detected_min_php' => $version,
+                        'tested_versions' => $testedVersions,
+                        'based_on_version_scan' => true,
+                        'summary' => sprintf('Lowest required PHP version: %s', $version),
+                    ],                    
                 ];
             }
 
