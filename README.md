@@ -30,11 +30,20 @@ The runner publishes an envelope like:
   "plugin": "akismet",
   "src": "/path/to/unpacked/plugin",
   "report": {
-    "detected_min_php": "7.2",
-    "tested_versions": ["5.6", "7.0", "7.1", "7.2"],
     "status": "ok",
-    "summary": "Lowest required PHP version: 7.2",
-    "findings": []
+    "score": {
+      "grade": "A+",
+      "reasoning": "The plugin declares Requires PHP 7.2 and the code scan also detects 7.2 as the lowest required PHP version."
+    },
+    "metrics": {
+      "detected_min_php": "7.2",
+      "declared_min_php": "7.2",
+      "declared_min_php_source": "/path/to/unpacked/plugin/readme.txt",
+      "tested_versions": ["5.6", "7.0", "7.1", "7.2"],
+      "summary": "Lowest required PHP version: 7.2"
+    },
+    "issues": [],
+    "details": {}
   },
   "received_at": "2026-03-20T10:00:00+00:00",
   "completed_at": "2026-03-20T10:00:05+00:00"
@@ -47,7 +56,18 @@ The runner publishes an envelope like:
 - Adds custom PHPCS sniffs for newer PHP 8.x features that are not covered reliably enough for this runner
 - Tests a fixed set of PHP versions from low to high
 - Finds the first version with zero compatibility findings
-- Returns findings for the last failing version to explain why older versions do not work
+- Looks for a root-level `readme.txt` first and falls back to a root-level `readme.md`
+- Extracts `Requires PHP` from that readme and compares it to the detected minimum PHP version
+- Uses that comparison to assign a grade
+
+## Readme precedence
+
+For grading, the runner only inspects root-level readme files in the plugin directory:
+
+- `readme.txt`
+- `readme.md`
+
+If both exist, `readme.txt` takes precedence. Nested readmes are ignored.
 
 ## Custom PHPCS rules
 

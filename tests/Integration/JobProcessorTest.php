@@ -21,6 +21,8 @@ class JobProcessorTest extends TestCase
 
         $payload = json_encode([
             'plugin' => $fixtureName,
+            'version' => '1.0.0',
+            'source' => 'local',
             'src' => $fixturePath,
         ], JSON_THROW_ON_ERROR);
 
@@ -29,9 +31,9 @@ class JobProcessorTest extends TestCase
         self::assertSame('runner-php-compatibility', $result['runner']);
         self::assertSame($fixtureName, $result['plugin']);
         self::assertSame($fixturePath, $result['src']);
-        self::assertSame($expectedVersion, $result['report']['detected_min_php']);
+        self::assertSame($expectedVersion, $result['report']['metrics']['detected_min_php']);
         self::assertSame('ok', $result['report']['status']);
-        self::assertContains($expectedVersion, $result['report']['tested_versions']);
+        self::assertContains($expectedVersion, $result['report']['metrics']['tested_versions']);
     }
 
     /**
@@ -84,6 +86,35 @@ class JobProcessorTest extends TestCase
         $this->expectExceptionMessage('Missing or invalid "plugin" field.');
 
         $processor->process(json_encode([
+            'version' => '1.0.0',
+            'source' => 'local',
+            'src' => '/tmp/plugin',
+        ], JSON_THROW_ON_ERROR));
+    }
+
+    public function testRejectsMissingSourceWhenOnlyVersionIsProvided(): void
+    {
+        $processor = new JobProcessor($this->makeConfig());
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Missing or invalid "source" field.');
+
+        $processor->process(json_encode([
+            'plugin' => 'akismet',
+            'version' => '1.0.0',
+        ], JSON_THROW_ON_ERROR));
+    }
+
+    public function testRejectsMissingSource(): void
+    {
+        $processor = new JobProcessor($this->makeConfig());
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Missing or invalid "source" field.');
+
+        $processor->process(json_encode([
+            'plugin' => 'akismet',
+            'version' => '1.0.0',
             'src' => '/tmp/plugin',
         ], JSON_THROW_ON_ERROR));
     }
@@ -97,6 +128,8 @@ class JobProcessorTest extends TestCase
 
         $processor->process(json_encode([
             'plugin' => 'akismet',
+            'version' => '1.0.0',
+            'source' => 'local',
         ], JSON_THROW_ON_ERROR));
     }
 
@@ -109,6 +142,8 @@ class JobProcessorTest extends TestCase
 
         $processor->process(json_encode([
             'plugin' => 'missing-plugin',
+            'version' => '1.0.0',
+            'source' => 'local',
             'src' => '/tmp/does-not-exist',
         ], JSON_THROW_ON_ERROR));
     }
@@ -120,6 +155,8 @@ class JobProcessorTest extends TestCase
 
         $result = $processor->process(json_encode([
             'plugin' => 'min-php-7.4',
+            'version' => '1.0.0',
+            'source' => 'local',
             'src' => $fixturePath,
         ], JSON_THROW_ON_ERROR));
 
@@ -129,10 +166,59 @@ class JobProcessorTest extends TestCase
         self::assertArrayHasKey('report', $result);
         self::assertArrayHasKey('received_at', $result);
         self::assertArrayHasKey('completed_at', $result);
-        self::assertArrayHasKey('detected_min_php', $result['report']);
-        self::assertArrayHasKey('findings', $result['report']);
-        self::assertArrayHasKey('summary', $result['report']);
         self::assertArrayHasKey('status', $result['report']);
+        self::assertArrayHasKey('score', $result['report']);
+        self::assertArrayHasKey('metrics', $result['report']);
+        self::assertArrayHasKey('issues', $result['report']);
+        self::assertArrayHasKey('details', $result['report']);
+        self::assertArrayHasKey('detected_min_php', $result['report']['metrics']);
+        self::assertArrayHasKey('declared_min_php', $result['report']['metrics']);
+        self::assertArrayHasKey('summary', $result['report']['metrics']);
+    }
+
+    public function testGradeIsAPlusWhenReadmeMatchesDetectedVersion(): void
+    {
+        $result = $this->processFixture('readme-txt-match');
+
+        self::assertSame('7.4', $result['report']['metrics']['detected_min_php']);
+        self::assertSame('7.4', $result['report']['metrics']['declared_min_php']);
+        self::assertSame('A+', $result['report']['score']['grade']);
+    }
+
+    public function testReadmeTxtTakesPrecedenceOverReadmeMd(): void
+    {
+        $result = $this->processFixture('readme-txt-precedence');
+
+        self::assertSame('7.4', $result['report']['metrics']['declared_min_php']);
+        self::assertStringEndsWith('/readme.txt', $result['report']['metrics']['declared_min_php_source']);
+        self::assertSame('A+', $result['report']['score']['grade']);
+    }
+
+    public function testReadmeMdIsUsedWhenReadmeTxtIsMissing(): void
+    {
+        $result = $this->processFixture('readme-md-fallback');
+
+        self::assertSame('8.0', $result['report']['metrics']['declared_min_php']);
+        self::assertStringEndsWith('/readme.md', $result['report']['metrics']['declared_min_php_source']);
+        self::assertSame('A+', $result['report']['score']['grade']);
+    }
+
+    public function testGradeIsFWhenDeclaredVersionIsLowerThanDetectedVersion(): void
+    {
+        $result = $this->processFixture('readme-declared-too-low');
+
+        self::assertSame('7.4', $result['report']['metrics']['declared_min_php']);
+        self::assertSame('8.0', $result['report']['metrics']['detected_min_php']);
+        self::assertSame('F', $result['report']['score']['grade']);
+    }
+
+    public function testNestedReadmeIsIgnored(): void
+    {
+        $result = $this->processFixture('nested-readme-ignored');
+
+        self::assertNull($result['report']['metrics']['declared_min_php']);
+        self::assertNull($result['report']['metrics']['declared_min_php_source']);
+        self::assertSame('C', $result['report']['score']['grade']);
     }
 
     private function makeConfig(): Config
@@ -147,5 +233,21 @@ class JobProcessorTest extends TestCase
             reportExchange: 'plugin.analysis.reports',
             runnerName: 'runner-php-compatibility'
         );
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function processFixture(string $fixtureName): array
+    {
+        $processor = new JobProcessor($this->makeConfig());
+        $fixturePath = dirname(__DIR__) . '/fixtures/' . $fixtureName;
+
+        return $processor->process(json_encode([
+            'plugin' => $fixtureName,
+            'version' => '1.0.0',
+            'source' => 'local',
+            'src' => $fixturePath,
+        ], JSON_THROW_ON_ERROR));
     }
 }

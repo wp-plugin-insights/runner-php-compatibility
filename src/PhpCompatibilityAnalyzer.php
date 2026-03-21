@@ -10,6 +10,10 @@ use RuntimeException;
 class PhpCompatibilityAnalyzer
 {
     private const REPORT_LIMIT = 25;
+    private const README_CANDIDATES = [
+        'readme.txt',
+        'readme.md',
+    ];
     private const VERSION_CANDIDATES = [
         '5.6',
         '7.0',
@@ -42,6 +46,7 @@ class PhpCompatibilityAnalyzer
             throw new InvalidArgumentException(sprintf('Plugin source path does not exist: %s', $job->src));
         }
 
+        $declaredRequirement = $this->detectDeclaredPhpRequirement($job->src);
         $testedVersions = [];
         $lastFailure = null;
 
@@ -53,16 +58,27 @@ class PhpCompatibilityAnalyzer
 
             if (($result['totals']['errors'] ?? 0) === 0
                 && ($result['totals']['warnings'] ?? 0) === 0) {
+                $score = $this->buildScore($declaredRequirement, $version);
+
                 return [
+                    'status' => 'ok',
                     'score' => [
-                        'grade' => 'A+',
+                        'grade' => $score['grade'],
+                        'reasoning' => $score['reasoning'],
                     ],
                     'metrics' => [
                         'detected_min_php' => $version,
+                        'declared_min_php' => $declaredRequirement['version'],
+                        'declared_min_php_source' => $declaredRequirement['path'],
                         'tested_versions' => $testedVersions,
                         'based_on_version_scan' => true,
                         'summary' => sprintf('Lowest required PHP version: %s', $version),
-                    ],                    
+                    ],
+                    'issues' => [],
+                    /*'details' => [
+                        'declared_requirement' => $declaredRequirement,
+                        'blocking_findings' => $lastFailure['findings'] ?? [],
+                    ],*/
                 ];
             }
 
@@ -74,14 +90,28 @@ class PhpCompatibilityAnalyzer
 
         return [
             'status' => 'no-supported-version-detected',
-            'detected_min_php' => null,
-            'tested_versions' => $testedVersions,
-            'summary' => sprintf(
-                'Compatibility findings remained for all tested versions up to %s',
-                end($testedVersions)
-            ),
-            'findings' => $lastFailure['findings'] ?? [],
-            'based_on_version_scan' => true,
+            'score' => [
+                'grade' => 'F',
+                'reasoning' => sprintf(
+                    'Compatibility findings remained for all tested versions up to %s.',
+                    end($testedVersions)
+                ),
+            ],
+            'metrics' => [
+                'detected_min_php' => null,
+                'declared_min_php' => $declaredRequirement['version'],
+                'declared_min_php_source' => $declaredRequirement['path'],
+                'tested_versions' => $testedVersions,
+                'based_on_version_scan' => true,
+                'summary' => sprintf(
+                    'Compatibility findings remained for all tested versions up to %s',
+                    end($testedVersions)
+                ),
+            ],
+            'issues' => $lastFailure['findings'] ?? [],
+            /*'details' => [
+                'declared_requirement' => $declaredRequirement,
+            ],*/
         ];
     }
 
@@ -194,5 +224,115 @@ class PhpCompatibilityAnalyzer
     private function limitFindings(array $findings): array
     {
         return array_slice($findings, 0, self::REPORT_LIMIT);
+    }
+
+    /**
+     * @return array{path: ?string, format: ?string, version: ?string}
+     */
+    private function detectDeclaredPhpRequirement(string $src): array
+    {
+        foreach (self::README_CANDIDATES as $readmeFileName) {
+            $path = $src . '/' . $readmeFileName;
+
+            if (!is_file($path)) {
+                continue;
+            }
+
+            $contents = file_get_contents($path);
+
+            if ($contents === false) {
+                throw new RuntimeException(sprintf('Failed to read readme file: %s', $path));
+            }
+
+            return [
+                'path' => $path,
+                'format' => pathinfo($path, PATHINFO_EXTENSION),
+                'version' => $this->extractRequiresPhpVersion($contents),
+            ];
+        }
+
+        return [
+            'path' => null,
+            'format' => null,
+            'version' => null,
+        ];
+    }
+
+    private function extractRequiresPhpVersion(string $contents): ?string
+    {
+        if (!preg_match('/^\\s*Requires PHP:\\s*(.+)$/mi', $contents, $matches)) {
+            return null;
+        }
+
+        $value = trim($matches[1]);
+
+        if (!preg_match('/\\d+(?:\\.\\d+)+/', $value, $versionMatch)) {
+            return null;
+        }
+
+        return $versionMatch[0];
+    }
+
+    /**
+     * @param array{path: ?string, format: ?string, version: ?string} $declaredRequirement
+     * @return array{grade: string, reasoning: string}
+     */
+    private function buildScore(array $declaredRequirement, string $detectedVersion): array
+    {
+        $declaredVersion = $declaredRequirement['version'];
+
+        if ($declaredVersion === null) {
+            if ($declaredRequirement['path'] === null) {
+                return [
+                    'grade' => 'C',
+                    'reasoning' => sprintf(
+                        'No root-level readme.txt or readme.md declares a Requires PHP value, so the detected minimum PHP version %s cannot be compared against a plugin-declared requirement.',
+                        $detectedVersion
+                    ),
+                ];
+            }
+
+            return [
+                'grade' => 'C',
+                'reasoning' => sprintf(
+                    'The plugin readme at %s does not declare a Requires PHP value, so the detected minimum PHP version %s cannot be compared against a plugin-declared requirement.',
+                    $declaredRequirement['path'],
+                    $detectedVersion
+                ),
+            ];
+        }
+
+        $comparison = version_compare($declaredVersion, $detectedVersion);
+
+        if ($comparison === 0) {
+            return [
+                'grade' => 'A+',
+                'reasoning' => sprintf(
+                    'The plugin declares Requires PHP %s and the code scan also detects %s as the lowest required PHP version.',
+                    $declaredVersion,
+                    $detectedVersion
+                ),
+            ];
+        }
+
+        if ($comparison > 0) {
+            return [
+                'grade' => 'A',
+                'reasoning' => sprintf(
+                    'The plugin declares Requires PHP %s while the code scan detects %s as the lowest required PHP version. The declaration is conservative but stricter than necessary.',
+                    $declaredVersion,
+                    $detectedVersion
+                ),
+            ];
+        }
+
+        return [
+            'grade' => 'F',
+            'reasoning' => sprintf(
+                'The plugin declares Requires PHP %s, but the code scan detects %s as the lowest required PHP version. The declared requirement is lower than the code actually needs.',
+                $declaredVersion,
+                $detectedVersion
+            ),
+        ];
     }
 }
