@@ -16,8 +16,8 @@ class Config
         public readonly string $rabbitMqVhost,
         public readonly string $inputQueue,
         public readonly string $reportExchange,
+        public readonly string $runnerCategory,
         public readonly string $runnerName,
-        public readonly string $runnerCategory = 'compatibility'
     ) {
     }
 
@@ -34,8 +34,8 @@ class Config
             rabbitMqVhost: self::env('RABBITMQ_VHOST', '/'),
             inputQueue: self::env('RABBITMQ_INPUT_QUEUE', 'plugin.analysis.runner-php-compatibility'),
             reportExchange: self::env('RABBITMQ_REPORT_EXCHANGE', 'plugin.analysis.reports'),
-            runnerName: self::env('RUNNER_NAME', 'php-compatibility'),
-            runnerCategory: self::env('RUNNER_CATEGORY', 'basic')
+            runnerCategory: self::env('RUNNER_CATEGORY', 'basic'),
+            runnerName: self::env('RUNNER_NAME', 'php-compatibility')
         );
     }
 

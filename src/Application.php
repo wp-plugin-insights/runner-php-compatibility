@@ -24,7 +24,7 @@ class Application
 
         $channel->queue_declare($config->inputQueue, false, true, false, false);
         $channel->queue_bind($config->inputQueue, "plugin.analysis." . $config->runnerCategory);
-        $channel->exchange_declare($config->reportExchange, 'direct', false, true, false);
+        //$channel->exchange_declare($config->reportExchange, 'direct', false, true, false);
 
         $runner = new Runner($channel, $config);
         $runner->consume();
